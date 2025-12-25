@@ -1,5 +1,5 @@
 
-const Logo = ({ className = "h-12", color = "text-warm-brown" }: { className?: string, color?: string }) => {
+const Logo = ({ className = "h-12", color = "text-[hsl(var(--gold))]" }: { className?: string, color?: string }) => {
     return (
         <div className={`flex items-center gap-3 ${className}`}>
             {/* Geometric Symbol */}

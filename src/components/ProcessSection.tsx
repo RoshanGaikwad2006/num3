@@ -34,14 +34,14 @@ const ProcessSection = () => {
   const { openBooking } = useBooking();
 
   return (
-    <section className="bg-section-medium section-padding relative overflow-hidden">
-      <div className="container-wide relative z-10">
+    <section id="process" className="zone2 px-6 md:px-12 lg:px-20 pt-8 pb-12 relative overflow-hidden">
+      <div className="container-wide max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16 pt-8"
+          className="text-center max-w-2xl mx-auto mb-8"
         >
           <p className="text-gold font-medium mb-3 tracking-wide uppercase text-sm">The Process</p>
           <h2 className="text-3xl md:text-4xl font-serif font-semibold text-warm-brown mb-4">
@@ -106,9 +106,8 @@ const ProcessSection = () => {
           className="text-center"
         >
           <Button
-            variant="hero"
+            variant="default"
             size="xl"
-            className="group shadow-elevated hover:shadow-xl transition-all duration-300"
             onClick={openBooking}
           >
             Book Your Consultation

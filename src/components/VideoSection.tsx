@@ -7,7 +7,7 @@ const VideoSection = () => {
     const { openBooking } = useBooking();
 
     return (
-        <section className="py-24 bg-section-light relative overflow-hidden">
+        <section className="py-24 zone2 relative overflow-hidden">
             <div className="container-wide">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left - Video Placeholder */}
@@ -56,12 +56,7 @@ const VideoSection = () => {
                         </div>
 
                         <div className="pt-2">
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                className="px-8 border-warm-brown/30 text-warm-brown hover:bg-warm-brown hover:text-white transition-all duration-300 w-full sm:w-auto"
-                                onClick={openBooking}
-                            >
+                            <Button size="lg" className="w-full sm:w-auto" onClick={openBooking}>
                                 Book a Consultation
                             </Button>
                         </div>

@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 
 const WhoThisIsForSection = () => {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 zone2 relative overflow-hidden">
             <div className="container-narrow">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

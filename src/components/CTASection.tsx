@@ -7,7 +7,7 @@ const CTASection = () => {
   const { openBooking } = useBooking();
 
   return (
-    <section className="bg-warm-brown/5 section-padding py-24 relative overflow-hidden">
+    <section className="zone1 section-padding py-24 relative overflow-hidden">
       <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,9 +28,8 @@ const CTASection = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              variant="hero"
+              variant="default"
               size="xl"
-              className="shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
               onClick={openBooking}
             >
               <Calendar className="w-5 h-5 mr-2" />
@@ -39,7 +38,7 @@ const CTASection = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-[#4A4238]/20 hover:bg-[#4A4238]/5 text-[#4A4238] min-w-[200px]"
+              className="min-w-[200px] text-gold"
               onClick={() => window.open('https://wa.me/919560416174', '_blank')}
             >
               <MessageCircle className="mr-2 h-5 w-5" />

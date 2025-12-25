@@ -62,7 +62,7 @@ const ProductDetail = () => {
 
             <div className="pt-32 pb-24 container-wide px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
                 {/* Back Link */}
-                <Link to="/products" className="inline-flex items-center text-warm-gray hover:text-warm-brown transition-colors mb-8 text-sm font-medium">
+                    <Link to="/products" className="inline-flex items-center text-warm-gray hover:text-warm-brown transition-colors mb-8 text-sm font-medium">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to All Tools
                 </Link>
@@ -146,19 +146,14 @@ const ProductDetail = () => {
                             </div>
 
                             {/* Secondary Soft CTA */}
-                            <div className="bg-warm-brown/5 rounded-xl p-6 border border-warm-brown/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                                                <div className="bg-warm-brown/5 rounded-xl p-6 border border-warm-brown/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                                 <div className="text-left">
                                     <p className="font-medium text-warm-brown text-sm">Unsure if this is right for you?</p>
                                     <p className="text-warm-gray text-xs">Chat with an expert before ordering.</p>
                                 </div>
-                                <Button
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={handleExpertChat}
-                                    className="border-warm-brown/20 hover:bg-warm-brown/10 text-warm-brown whitespace-nowrap"
-                                >
-                                    Talk to Expert on WhatsApp
-                                </Button>
+                                                                <Button variant="outline" size="sm" onClick={handleExpertChat}>
+                                                                    Talk to Expert on WhatsApp
+                                                                </Button>
                             </div>
 
 
@@ -180,11 +175,7 @@ const ProductDetail = () => {
                             </div>
 
                             <div className="flex flex-col gap-3 pt-6">
-                                <Button
-                                    size="lg"
-                                    className="w-full bg-gold hover:bg-gold/90 text-white shadow-md hover:shadow-lg transition-all duration-300 h-14 text-lg"
-                                    onClick={handleWhatsAppOrder}
-                                >
+                                <Button size="lg" className="w-full" onClick={handleWhatsAppOrder}>
                                     Order via WhatsApp
                                 </Button>
                                 <p className="text-xs text-center text-warm-brown/60 italic">
@@ -207,10 +198,7 @@ const ProductDetail = () => {
                         exit={{ opacity: 0, y: 20 }}
                         className="fixed bottom-6 right-6 z-40"
                     >
-                        <Button
-                            onClick={handleWhatsAppOrder}
-                            className="rounded-full bg-gold text-white shadow-xl hover:shadow-2xl hover:bg-gold/90 px-6 py-6 font-medium text-base transition-all duration-300 border border-white/20 backdrop-blur-sm"
-                        >
+                        <Button onClick={handleWhatsAppOrder} size="lg">
                             Order Now <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
                     </motion.div>

@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import Logo from "@/components/Logo";
+import { useNavigate } from "react-router-dom";
 
 const navLinks = [
   { name: "About", href: "/about" },
-  { name: "Services", href: "#services" },
+  { name: "Services", href: "/#services" },
   { name: "Tools", href: "/products" },
   { name: "Contact", href: "/contact" },
 ];
@@ -25,6 +26,28 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleNavClick = (href: string) => {
+    // If href is a root hash (e.g. "/#services"), navigate to home then scroll
+    if (href.startsWith("/#")) {
+      const id = href.split("#")[1];
+      if (window.location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 80);
+      } else {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(href);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${isMobileMenuOpen
@@ -37,7 +60,7 @@ const Header = () => {
       <div className="container-wide px-6 lg:px-12 xl:px-20">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="block hover:opacity-90 transition-opacity">
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="block hover:opacity-90 transition-opacity">
             <Logo className="h-12" />
           </a>
 
@@ -47,12 +70,13 @@ const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-warm-gray hover:text-warm-brown transition-colors duration-200 font-medium"
+                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                className="text-warm-gray hover:text-warm-brown transition-colors duration-200 font-medium cursor-pointer"
               >
                 {link.name}
               </a>
             ))}
-            <Button variant="hero" size="default" onClick={openBooking}>
+            <Button variant="default" size="default" onClick={openBooking}>
               Book Now
             </Button>
           </nav>
@@ -82,13 +106,13 @@ const Header = () => {
                   <a
                     key={link.name}
                     href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
                     className="text-warm-gray hover:text-warm-brown transition-colors duration-200 font-medium py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
                   </a>
                 ))}
-                <Button variant="hero" size="default" className="mt-2" onClick={() => { openBooking(); setIsMobileMenuOpen(false); }}>
+                <Button variant="default" size="default" className="mt-2" onClick={() => { openBooking(); setIsMobileMenuOpen(false); }}>
                   Book Now
                 </Button>
               </nav>

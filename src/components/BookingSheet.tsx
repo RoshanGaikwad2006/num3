@@ -144,7 +144,7 @@ const BookingSheet = () => {
                         </div>
                     </div>
 
-                    <Button type="submit" className="w-full bg-gold hover:bg-gold/90 text-white" size="lg" disabled={isSubmitting}>
+                    <Button type="submit" variant="default" className="w-full" size="lg" disabled={isSubmitting}>
                         {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                         Confirm Consultation
                     </Button>

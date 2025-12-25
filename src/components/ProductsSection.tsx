@@ -39,7 +39,7 @@ const ProductsSection = () => {
     };
 
     return (
-        <section className="bg-white py-12 md:py-16 font-sans overflow-hidden">
+        <section className="zone2 py-12 md:py-16 font-sans overflow-hidden">
             <div className="container-wide">
                 <div className="flex items-end justify-between mb-8 px-2">
                     <motion.div
@@ -132,8 +132,8 @@ const ProductsSection = () => {
 
                                             <Link to={`/product/${product.id}`}>
                                                 <Button
-                                                    variant="secondary"
-                                                    className="w-full bg-white border border-warm-brown/20 text-warm-brown hover:bg-warm-brown hover:text-white transition-all duration-300"
+                                                    variant="outline"
+                                                    className="w-full"
                                                 >
                                                     View Details
                                                 </Button>
@@ -174,11 +174,12 @@ const ProductsSection = () => {
 
                 <div className="mt-8 text-center">
                     <Link to="/products">
-                        <Button variant="outline" className="min-w-[200px] border-warm-brown/30 text-warm-brown hover:bg-warm-brown/5">
+                        <Button variant="outline" className="min-w-[200px]">
                             View All Tools
                         </Button>
                     </Link>
                 </div>
+
             </div >
         </section >
     );

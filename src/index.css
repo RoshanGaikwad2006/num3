@@ -4,59 +4,69 @@
 
 @layer base {
   :root {
-    /* Warm, elegant palette */
-    --background: 35 30% 96%;
-    --foreground: 25 20% 20%;
+    /* Re-skin: premium numerology palette */
+    /* Backgrounds: warm off-white / ivory */
+    --background: 40 30% 98%;
+    /* Text: warm charcoal */
+    --foreground: 220 12% 12%;
 
-    --card: 35 25% 94%;
-    --card-foreground: 25 20% 20%;
+    --card: 40 28% 96%;
+    --card-foreground: 220 12% 12%;
 
-    --popover: 35 30% 96%;
-    --popover-foreground: 25 20% 20%;
+    --popover: 40 30% 98%;
+    --popover-foreground: 220 12% 12%;
 
-    /* Champagne gold accent */
-    --primary: 38 45% 60%;
-    --primary-foreground: 35 30% 98%;
+    /* Primary accent: antique gold (used for buttons, accents) */
+    --primary: 44 55% 45%;
+    --primary-foreground: 220 12% 98%;
 
-    /* Soft cream */
-    --secondary: 35 25% 92%;
-    --secondary-foreground: 25 20% 25%;
+    /* Secondary accent: deep indigo / midnight blue */
+    --secondary: 238 60% 12%;
+    --secondary-foreground: 40 30% 98%;
 
-    /* Warm muted tones */
-    --muted: 35 20% 88%;
-    --muted-foreground: 25 15% 45%;
+    /* Muted / neutrals */
+    --muted: 40 20% 92%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Subtle gold accent */
-    --accent: 38 40% 55%;
-    --accent-foreground: 35 30% 98%;
+    --accent: 44 45% 48%;
+    --accent-foreground: 220 12% 98%;
 
     --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 35 20% 85%;
-    --input: 35 20% 88%;
-    --ring: 38 45% 60%;
+    --border: 40 25% 88%;
+    --input: 40 25% 92%;
+    --ring: 238 60% 18%;
 
     --radius: 0.5rem;
 
     /* Custom design tokens */
-    --hero-bg: 30 18% 78%;
-    --section-light: 35 35% 97%;
-    --section-medium: 35 25% 93%;
-    --footer-bg: 30 15% 82%;
-    --gold: 38 50% 58%;
-    --gold-muted: 38 35% 70%;
-    --warm-brown: 25 25% 22%;
-    --warm-gray: 25 10% 55%;
+    --hero-bg: 238 60% 6%; /* deep indigo for soft radial */
+    --section-light: 40 35% 97%;
+    --section-medium: 40 25% 94%;
+    --footer-bg: 238 40% 8%;
+    --gold: 44 55% 48%; /* antique gold */
+    --gold-muted: 44 40% 60%;
+    --indigo: 238 60% 12%;
+    --warm-gray: 220 10% 55%;
+    --warm-brown: 30 12% 18%; /* legacy token: map to warm charcoal for headings & accents */
+    /* Twilight / numerology theme tokens */
+    --twilight: 220 20% 6%; /* deep indigo / cosmic navy */
+    --sacred-gold: 42 58% 52%; /* muted amber/gold */
+    --ivory-surface: 40 30% 98%; /* warm off-white surface used for content cards */
 
     /* Typography */
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'DM Sans', system-ui, sans-serif;
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(25 20% 20% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(25 20% 20% / 0.1);
-    --shadow-elevated: 0 16px 50px -12px hsl(25 20% 20% / 0.12);
+    --shadow-soft: 0 4px 20px -4px hsl(220 12% 12% / 0.06);
+    --shadow-card: 0 8px 30px -8px hsl(220 12% 12% / 0.08);
+    --shadow-elevated: 0 16px 50px -12px hsl(220 12% 12% / 0.1);
+    /* Explicit hex + rgb tokens for consistent site-wide usage */
+    --gold-hex: #D4AF37;
+    --gold-rgb: 212,175,55;
+    --navy-hex: #071018;
   }
 
   .dark {
@@ -92,6 +102,38 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    position: relative;
+    /* subtle radial softness behind hero area (indigo -> ivory) */
+    background-image: radial-gradient(800px 400px at 20% 10%, rgba(54,50,90,0.035), transparent 30%), radial-gradient(600px 300px at 80% 20%, rgba(54,50,90,0.02), transparent 35%);
+  }
+
+  /* Very subtle watermark patterns: faint numerology numbers and sacred geometry */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><g fill='none' font-family='serif' font-size='48' fill-opacity='0.03' fill='%23000'><text x='40' y='80'>1</text><text x='160' y='200'>2</text><text x='300' y='120'>3</text><text x='420' y='260'>4</text><text x='540' y='80'>5</text><text x='640' y='220'>6</text><text x='200' y='480'>7</text><text x='360' y='420'>8</text><text x='520' y='520'>9</text></g></svg>");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 420px;
+    /* Disabled global numerology watermark (use per-zone motifs only) */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><g stroke='%23000' stroke-opacity='0.02' fill='none'><circle cx='200' cy='200' r='60'/><circle cx='200' cy='200' r='100'/><circle cx='200' cy='200' r='140'/></g></svg>");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 800px;
+    /* disabled global sacred geometry motif */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
   }
 
   h1,
@@ -102,6 +144,14 @@
   h6 {
     font-family: var(--font-serif);
     @apply tracking-tight;
+    /* Slightly increased letter-spacing for refined headings */
+    letter-spacing: 0.0125em;
+  }
+
+  /* Slightly soften paragraph contrast for calm readability */
+  p {
+    color: hsl(var(--foreground) / 0.9);
+    line-height: 1.75;
   }
 }
 
@@ -133,4 +183,362 @@
   .gradient-text {
     @apply bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--gold-muted))] bg-clip-text text-transparent;
   }
+
+  /* Subtle golden text accent (very low strength, preserves base color/readability) */
+  .gold-accent-text {
+    text-shadow: 0 6px 20px rgba(201,164,92,0.06), 0 1px 2px rgba(201,164,92,0.02);
+  }
+
+  /* Subtle CTA gold glow for buttons; restrained and non-neon */
+  .gold-cta {
+    box-shadow: 0 10px 30px -12px rgba(201,164,92,0.12), 0 2px 6px rgba(45,40,90,0.04) inset;
+    transition: box-shadow 220ms ease, transform 140ms ease;
+  }
+
+  /* Primary CTA: soft gold fill with subtle inner shadow and gentle hover glow (no scale/translate) */
+  .gold-cta.solid {
+    background-color: var(--gold-hex); /* soft gold */
+    color: var(--navy-hex); /* deep text for contrast */
+    border: none;
+    box-shadow: inset 0 3px 10px rgba(0,0,0,0.10), 0 6px 18px rgba(45,40,90,0.04);
+  }
+
+  .gold-cta.solid:hover {
+    box-shadow: inset 0 3px 10px rgba(0,0,0,0.10), 0 18px 48px rgba(var(--gold-rgb),0.12);
+    /* no transform/scale — only glow */
+  }
+
+  /* Outline button variant: slightly brighter border + soft hover glow */
+  .outline-gold-glow {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--gold-hex); /* brighter gold */
+    color: #F8F5EA; /* warm off-white text by default */
+    transition: box-shadow 220ms ease, background-color 180ms ease, color 180ms ease;
+    background-color: transparent;
+  }
+
+  .outline-gold-glow:hover {
+    background-color: rgba(var(--gold-rgb),0.04);
+    box-shadow: 0 14px 40px -22px rgba(var(--gold-rgb),0.12);
+    /* no transform/scale — only glow */
+  }
+
+  /* WhatsApp icon: initial muted-gold, faint glow on hover */
+  .outline-gold-glow .whatsapp-icon {
+    color: #D6B86A;
+    transition: filter 180ms ease, color 180ms ease, text-shadow 180ms ease;
+  }
+
+  .outline-gold-glow:hover .whatsapp-icon {
+    color: #EADB9E;
+    filter: drop-shadow(0 6px 10px rgba(212,175,55,0.12));
+  }
+
+  /* Indigo divider for subtle section separation (use sparingly) */
+  .indigo-divider {
+    background: hsl(var(--indigo));
+    opacity: 0.06;
+  }
+
+  /* Muted gold border utility for CTA outlines and icons */
+  .muted-gold-border {
+    border-color: hsl(var(--gold) / 0.85);
+    color: hsl(var(--gold) / 0.95);
+  }
+
+  /* Slow, meditative drift animation used for background ambience */
+  @keyframes drift-slow {
+    0% { transform: translate3d(0,0,0); }
+    50% { transform: translate3d(6px,-4px,0); }
+    100% { transform: translate3d(0,0,0); }
+  }
+
+  .bg-drift {
+    animation: drift-slow 40s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Twilight overlay utility: subtle deep indigo wash with radial softness */
+  .twilight-overlay {
+    background-image: radial-gradient(circle at 20% 20%, rgba(10,14,26,0.06), transparent 28%), radial-gradient(circle at 80% 30%, rgba(10,14,26,0.04), transparent 40%);
+    mix-blend-mode: multiply;
+    opacity: 0.06; /* kept low to preserve readability */
+    pointer-events: none;
+  }
+
+  /* Sacred geometry faint motif utility (numbers/circles) - decorative only */
+  .numerology-motif {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><g fill='none' font-family='serif' font-size='64' fill-opacity='0.02' fill='%23C9A24D'><text x='40' y='80'>1</text><text x='160' y='200'>2</text><text x='300' y='120'>3</text><text x='420' y='260'>4</text><text x='540' y='80'>5</text><text x='640' y='220'>6</text><text x='200' y='480'>7</text><text x='360' y='420'>8</text><text x='520' y='520'>9</text></g></svg>");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 520px;
+    opacity: 0.01; /* kept very faint when used inside zone1 */
+    pointer-events: none;
+  }
+
+  /* Simple utility aliases using tokens for consistent usage */
+  .bg-gold { background-color: var(--gold-hex); }
+  .text-gold { color: var(--gold-hex); }
+  .border-gold { border-color: var(--gold-hex); }
+  .bg-gold-5 { background-color: rgba(var(--gold-rgb), 0.05); }
+  .bg-navy { background-color: var(--navy-hex); }
+  .text-navy { color: var(--navy-hex); }
+
+  /* Soft fade at bottom of dark zones to transition into light sections */
+  .zone1 {
+    position: relative;
+  }
+
+  .zone1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3rem;
+    pointer-events: none;
+    /* much softer fade: near-transparent light blend to avoid strong banding */
+    background: linear-gradient(180deg, rgba(7,16,24,0) 0%, rgba(246,241,230,0.04) 95%);
+    mix-blend-mode: normal;
+  }
+
+  /* Hero background: deep charcoal -> midnight navy gradient (top-left darker to bottom-right lighter) */
+  .hero-bg {
+    background-image: linear-gradient(135deg, var(--navy-hex) 0%, #0b1b2c 100%);
+    background-color: var(--navy-hex); /* fallback */
+  }
+
+  /* Soft radial golden glow behind hero image (4-6% opacity) */
+  .hero-image-glow {
+    background-image: radial-gradient(circle at center, rgba(201,164,77,0.05) 0%, rgba(201,164,77,0.04) 20%, transparent 45%);
+    opacity: 0.95; /* the glow itself uses low alpha inside gradient */
+    filter: blur(28px);
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  /* Decorative hero numbers: very faint gold with soft glow */
+  .hero-number {
+    color: var(--gold-hex);
+    /* slightly stronger, warm glow (still subtle overall because parent wrapper opacity is low) */
+    text-shadow: 0 18px 56px rgba(201,162,77,0.18), 0 8px 18px rgba(45,40,90,0.08);
+    -webkit-font-smoothing: antialiased;
+    filter: blur(0.08px);
+    opacity: 1; /* individual element full opacity; overall visibility controlled by parent wrapper (~3%) */
+    mix-blend-mode: screen; /* ensure visibility over darker hero background */
+    pointer-events: none;
+  }
+
+  /* Decorative CTA number behind text (very faint) */
+  .cta-number {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    font-family: var(--font-serif);
+    font-size: 200px;
+    line-height: 1;
+    color: var(--gold-hex);
+    filter: blur(0.6px);
+    text-shadow: 0 18px 50px rgba(201,162,77,0.18), 0 6px 16px rgba(45,40,90,0.06);
+    opacity: 0.03; /* decorative only */
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+    user-select: none;
+  }
+
+  /* Number below portrait */
+  .under-image-number {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-serif);
+    font-size: 120px;
+    color: var(--gold-hex);
+    filter: blur(0.8px);
+    text-shadow: 0 20px 60px rgba(201,162,77,0.18), 0 6px 18px rgba(45,40,90,0.06);
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 0;
+    user-select: none;
+  }
+
+  /* Very slow, meditative float for hero numbers (20-30s loops) */
+  @keyframes float-slow {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)) scale(1);
+    }
+    50% {
+      transform: translate3d(8px, -6px, 0) rotate(var(--rot, 0deg)) scale(1.02);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)) scale(1);
+    }
+  }
+
+  .hero-number-floating {
+    animation-name: float-slow;
+    animation-duration: var(--float-duration, 24s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  /* Subtle nudge: very low-amplitude, long-duration movement to avoid distraction */
+  @keyframes numerology-nudge {
+    0% { transform: translate3d(0,0,0) rotate(var(--rot, 0deg)) scale(1); }
+    25% { transform: translate3d(3px,-1.5px,0) rotate(calc(var(--rot, 0deg) + 0.6deg)) scale(1.005); }
+    50% { transform: translate3d(0,3px,0) rotate(calc(var(--rot, 0deg) - 0.4deg)) scale(0.998); }
+    75% { transform: translate3d(-1.5px,-1px,0) rotate(calc(var(--rot, 0deg) + 0.3deg)) scale(1.002); }
+    100% { transform: translate3d(0,0,0) rotate(var(--rot, 0deg)) scale(1); }
+  }
+
+  .hero-number-subtle {
+    /* combine the existing float with a very subtle nudge so motion feels organic but not distracting */
+    animation: float-slow var(--float-duration, 24s) ease-in-out infinite,
+               numerology-nudge var(--nudge-duration, 38s) ease-in-out infinite alternate;
+    will-change: transform;
+    backface-visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Soft radial glow behind heading area (warm gold / amber, 3-5% apparent) */
+  .hero-heading-glow {
+    position: absolute;
+    left: 12%;
+    top: 6%;
+    width: 52%;
+    height: 48%;
+    /* very soft, large-blurred warm amber — low alpha stops for a meditative fade */
+    background-image: radial-gradient(circle at 30% 20%, rgba(212,175,55,0.038) 0%, rgba(212,175,55,0.028) 14%, rgba(212,175,55,0.012) 30%, transparent 60%);
+    filter: blur(38px);
+    /* normal blend to avoid increasing perceived overall brightness */
+    mix-blend-mode: normal;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.98; /* keep overall darkness intact; stops are already low-alpha */
+  }
+
+  /* ZONE THEMES */
+
+  /* Zone 1 — Dark Mystic Impact */
+  .zone1 {
+    background-image: linear-gradient(135deg, color-mix(in srgb, var(--navy-hex) 85%, #04101a 15%) 0%, var(--navy-hex) 100%);
+    color: #F6F1E6; /* warm off-white for body text */
+    position: relative;
+  }
+  .zone1 h1,
+  .zone1 h2,
+  .zone1 h3,
+  .zone1 h4 {
+    color: var(--gold-hex); /* consistent gold for headings */
+  }
+  .zone1 p,
+  .zone1 .text,
+  .zone1 li {
+    color: #F6F1E6; /* warm off-white */
+  }
+  /* subtle numerology motif for zone1 only (5-8% opacity) */
+  .zone1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><g fill='none' font-family='serif' font-size='64' fill='%23C9A45C' fill-opacity='0.06'><text x='40' y='80'>1</text><text x='160' y='200'>2</text><text x='300' y='120'>3</text><text x='420' y='260'>4</text><text x='540' y='80'>5</text><text x='640' y='220'>6</text><text x='200' y='480'>7</text><text x='360' y='420'>8</text><text x='520' y='520'>9</text></g></svg>");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 600px;
+    opacity: 0.04; /* 4% total when combined with .numerology-motif in hero */
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Zone 2 — Light Mystic Trust */
+  .zone2 {
+    background-color: #F6F1E6; /* warm ivory */
+    color: #333532; /* dark neutral grey for body */
+  }
+  .zone2 h1,
+  .zone2 h2,
+  .zone2 h3,
+  .zone2 h4 {
+    color: var(--gold-hex); /* soft gold */
+  }
+  .zone2 p,
+  .zone2 li,
+  .zone2 .text {
+    color: #4A4A48; /* dark neutral grey */
+  }
+  .zone2 .card,
+  .zone2 .services-card,
+  .zone2 .challenges-card {
+    background-color: #FBF8F2; /* light surface */
+    box-shadow: 0 8px 20px rgba(16,16,16,0.06);
+  }
+  .zone2 .icon,
+  .zone2 .services-icon,
+  .zone2 .challenges-icon {
+    color: #C9A45C; /* minimal gold line icons */
+    background-color: transparent;
+  }
+
+  /* Zone 3 — Hybrid Premium Offer */
+  .zone3 {
+    background-image: linear-gradient(180deg, #F3ECE0 0%, #EDE6DA 100%); /* slightly darker than zone2 */
+    color: #333532;
+  }
+  .zone3 h1,
+  .zone3 h2,
+  .zone3 h3,
+  .zone3 h4 {
+    color: #C9A45C; /* gold accents for headings */
+  }
+  .zone3 .card,
+  .zone3 .services-card,
+  .zone3 .products-card {
+    background-color: #FFFFFF; /* cards remain light */
+    box-shadow: 0 8px 20px rgba(16,16,16,0.06);
+  }
+  .zone3 .icon,
+  .zone3 .services-icon,
+  .zone3 .products-icon {
+    color: #C9A45C; /* gold accents on icons */
+  }
+  .zone3 .card:hover {
+    box-shadow: 0 14px 34px rgba(16,16,16,0.08); /* subtle hover elevation */
+  }
+
+/* Light mystic numerology theme scoped to the Challenges section */
+.challenges-section {
+  background-color: #F6F1E6; /* warm off-white / ivory */
+  color: #333532; /* default dark neutral grey for body text */
+}
+
+.challenges-section .challenges-card {
+  background-color: #FBF8F2; /* slightly warmer card surface */
+  border: 1px solid rgba(16,16,16,0.04);
+  box-shadow: 0 8px 20px rgba(16,16,16,0.06);
+  color: #333532;
+}
+
+.challenges-section .challenges-heading {
+  color: #D4AF37; /* soft gold headings */
+}
+
+.challenges-section .challenges-body {
+  color: #4A4A48; /* dark neutral grey for paragraphs */
+}
+
+.challenges-section .challenges-icon {
+  background-color: rgba(212,175,55,0.08);
+  color: #C9A45C; /* gold tone for icon */
+  box-shadow: 0 6px 14px rgba(16,16,16,0.04);
+}
+
+.challenges-section .challenges-list-dot {
+  background-color: #C9A45C;
+}
 }

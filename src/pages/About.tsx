@@ -135,14 +135,21 @@ const About = () => {
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
-                                    whileHover={{ y: -5 }}
-                                    className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg border border-[#C9A45C]/10 transition-all group"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.5, delay: i * 0.06 }}
+                                    className="group h-full"
                                 >
-                                    <div className="w-12 h-12 bg-[#F9F5F0] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#C9A45C] transition-colors">
-                                        <item.icon className="w-6 h-6 text-[#C9A45C] group-hover:text-white" />
+                                    <div className="h-full rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out relative overflow-hidden flex flex-col justify-between hover:-translate-y-[2px] bg-white border border-gold shadow-lg ring-1 ring-gold/10">
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 shrink-0 bg-gold text-white shadow-lg">
+                                            <item.icon className="w-6 h-6" />
+                                        </div>
+                                        <div className="flex-grow">
+                                            <h3 className="text-xl font-serif font-bold text-warm-brown group-hover:text-gold transition-colors duration-300 mb-3">{item.title}</h3>
+                                            <p className="leading-relaxed mb-6 text-warm-gray text-sm">{item.desc}</p>
+                                        </div>
                                     </div>
-                                    <h3 className="font-serif font-bold text-xl mb-3 text-[#4A4238]">{item.title}</h3>
-                                    <p className="text-[#6D635B] text-sm leading-relaxed">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>

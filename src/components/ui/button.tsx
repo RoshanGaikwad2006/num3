@@ -5,19 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-sans font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-sans font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-card",
+          default: "bg-[var(--gold-hex)] text-[var(--navy-hex)] border-none",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-border bg-transparent hover:bg-muted/50 text-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-muted/50 text-foreground",
-        link: "text-gold underline-offset-4 hover:underline",
-        hero: "bg-warm-brown text-section-light hover:bg-warm-brown/95 shadow-lg hover:shadow-xl hover:-translate-y-0.5",
-        heroOutline: "border-2 border-warm-brown/40 bg-transparent text-warm-brown hover:bg-warm-brown/5 hover:border-warm-brown/60",
-        gold: "bg-gold text-primary-foreground hover:bg-gold/90 shadow-soft hover:shadow-card",
+          outline: "border border-[var(--gold-hex)] bg-transparent text-[var(--navy-hex)]",
+          secondary: "border border-[var(--gold-hex)] bg-transparent text-[var(--navy-hex)]",
+          ghost: "bg-transparent text-[var(--navy-hex)]",
+          link: "text-[var(--gold-hex)] underline-offset-4",
+          hero: "bg-[var(--gold-hex)] text-[var(--navy-hex)] rounded-lg",
+          heroOutline: "border-2 border-[var(--gold-hex)] bg-transparent text-[var(--navy-hex)]",
+          gold: "bg-[var(--gold-hex)] text-[var(--navy-hex)] rounded-md",
       },
       size: {
         default: "h-11 px-6 py-2 text-sm",

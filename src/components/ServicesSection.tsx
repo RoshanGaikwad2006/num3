@@ -34,7 +34,7 @@ const ServicesSection = () => {
   const { openBooking } = useBooking();
 
   return (
-    <section id="services" className="bg-section-light pb-20 pt-10 md:pb-24 md:pt-12">
+    <section id="services" className="zone2 pb-20 pt-10 md:pb-24 md:pt-12">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,9 +64,7 @@ const ServicesSection = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group h-full"
               >
-                <div
-                  className="h-full rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out relative overflow-hidden flex flex-col justify-between hover:-translate-y-[2px] bg-white border-[#C9A45C]/50 shadow-lg ring-1 ring-[#C9A45C]/10"
-                >
+                <div className="h-full rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out relative overflow-hidden flex flex-col justify-between hover:-translate-y-[2px] bg-white border border-gold shadow-lg ring-1 ring-gold/10">
                   {isPrimary && (
                     <div className="absolute top-0 right-0 bg-gold text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wider z-10">
                       MOST POPULAR
@@ -74,9 +72,7 @@ const ServicesSection = () => {
                   )}
 
                   <div className="flex items-start gap-5">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 bg-[#C9A45C] text-white shadow-lg"
-                    >
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 bg-gold text-white shadow-lg">
                       <service.icon className="w-6 h-6" />
                     </div>
                     <div className="space-y-3 flex-1">
@@ -98,12 +94,7 @@ const ServicesSection = () => {
                   </div>
 
                   <div className="mt-8 pl-0 md:pl-[4.25rem]">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-warm-brown border-warm-brown/20 hover:bg-gold/10 hover:text-warm-brown hover:border-gold/40 transition-all duration-300 w-full md:w-auto"
-                      onClick={openBooking}
-                    >
+                    <Button variant="outline" size="sm" className="w-full md:w-auto" onClick={openBooking}>
                       Book Now
                     </Button>
                   </div>
@@ -120,7 +111,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center"
         >
-          <Button size="lg" className="bg-gold hover:bg-gold/90 text-white px-8 shadow-md hover:shadow-lg transition-all duration-300">
+          <Button size="lg" variant="default" className="px-8">
             View All Services
           </Button>
         </motion.div>

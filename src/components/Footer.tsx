@@ -1,10 +1,11 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Logo from "@/components/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-warm-brown/10 section-padding py-16 text-warm-gray border-t border-warm-brown/5">
+    <footer className="zone2 section-padding py-16 text-warm-gray border-t border-warm-brown/5">
       <div className="container-wide">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
           {/* Brand */}
@@ -24,18 +25,23 @@ const Footer = () => {
             <h4 className="text-lg font-serif font-semibold text-warm-brown">
               Quick Links
             </h4>
-            <ul className="space-y-2">
-              {["About", "Services", "Process", "Testimonials", "Blog", "Contact"].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="hover:text-gold transition-colors duration-200 inline-block py-0.5"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col space-y-2">
+              <Link to="/about" className="hover:text-gold transition-colors duration-200 inline-block py-0.5 w-fit">
+                About
+              </Link>
+              <a href="/#services" className="hover:text-gold transition-colors duration-200 inline-block py-0.5 w-fit">
+                Services
+              </a>
+              <a href="/#process" className="hover:text-gold transition-colors duration-200 inline-block py-0.5 w-fit">
+                Process
+              </a>
+              <Link to="/contact" className="hover:text-gold transition-colors duration-200 inline-block py-0.5 w-fit">
+                Contact
+              </Link>
+              <Link to="/products" className="hover:text-gold transition-colors duration-200 inline-block py-0.5 w-fit">
+                Tools & Products
+              </Link>
+            </div>
           </div>
 
           {/* Contact */}
